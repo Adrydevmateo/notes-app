@@ -6,10 +6,44 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notes</title>
+
+  <style>
+    #loading-screen {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: grid;
+      place-content: center;
+    }
+
+    #root {
+      opacity: 0;
+      transition: opacity .2s ease-in;
+    }
+
+    .loading-finished #root {
+      opacity: 1;
+    }
+
+    .loading-finished #loading-screen {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
+  <div id="loading-screen">
+    <img src="./src/svg/bar-spinner.svg" alt="loading screen icon">
+  </div>
   <div id="root"></div>
+  <script>
+    window.onload = function () {
+      document.body.classList.add('loading-finished')
+      // setTimeout(() => document.body.classList.add('loading-finished'), 3000)
+    }
+  </script>
   <script type="module" src="/src/main.tsx"></script>
 </body>
 
