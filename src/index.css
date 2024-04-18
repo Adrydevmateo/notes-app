@@ -3,4 +3,87 @@
 body {
   font-size: 18px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  word-break: break-all;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+button {
+  font-size: 18px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  cursor: pointer;
+}
+
+.note {
+  display: block;
+  background-color: red;
+  cursor: pointer;
+}
+
+.note .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
+}
+
+.note .header .title {
+  margin: 0;
+}
+
+.note-btn-open {
+  pointer-events: none;
+}
+
+.note-btn-open,
+.note-btn-close {
+  background-color: transparent;
+  border: none;
+}
+
+.note-btn-close {
+  display: none;
+}
+
+.note .content {
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .2s ease-in-out;
+}
+
+.note:has(input[type='radio']:checked) {
+  background-color: blue !important;
+  cursor: initial;
+}
+
+.note:has(input[type='radio']:checked) .header {
+  padding-bottom: 0;
+}
+
+.note:has(input[type="radio"]:checked) .content {
+  height: initial;
+  opacity: 1;
+  visibility: initial;
+  padding: 1em;
+  padding-top: .5em;
+}
+
+.note:has(input[type="radio"]:checked) .note-btn-open {
+  display: none;
+}
+
+.note:has(input[type="radio"]:checked) .note-btn-close {
+  display: initial;
+}
+
+#btn-add-more {
+  padding: 0;
+  position: fixed;
+  right: 2em;
+  bottom: 2em;
+  padding: 2em;
 }
