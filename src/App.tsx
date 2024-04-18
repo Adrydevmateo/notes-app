@@ -4,7 +4,8 @@ import { TNote } from './App.types'
 
 // TODO: Add Sorting Controls
 function App() {
-  const [notes, setNotes] = useState<Array<TNote>>([
+  // TODO: try dividing notes by column: Example = notes1, notes2, notes3
+  const [notes] = useState<Array<TNote>>([
     { id: crypto.randomUUID(), title: 'Title', content: 'Content' },
     { id: crypto.randomUUID(), title: 'Title', content: 'Content' },
     { id: crypto.randomUUID(), title: 'Title', content: 'Content' },
