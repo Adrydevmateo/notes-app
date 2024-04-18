@@ -6,8 +6,13 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notes</title>
+  <!-- TODO: Change Favicon -->
 
   <style>
+    body {
+      background-color: #222831;
+    }
+
     #loading-screen {
       position: fixed;
       top: 0;
@@ -40,8 +45,8 @@
   <div id="root"></div>
   <script>
     window.onload = function () {
-      document.body.classList.add('loading-finished')
-      // setTimeout(() => document.body.classList.add('loading-finished'), 3000)
+      // document.body.classList.add('loading-finished')
+      setTimeout(() => document.body.classList.add('loading-finished'), 1000)
     }
   </script>
   <script type="module" src="/src/main.tsx"></script>
