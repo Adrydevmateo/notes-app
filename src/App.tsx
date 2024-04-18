@@ -4,7 +4,7 @@ import { TNote } from './App.types'
 
 // TODO: Add Sorting Controls
 function App() {
-  const [notes, setNotes] = useState<Array<TNote>>([
+  const [notes] = useState<Array<TNote>>([
     { id: crypto.randomUUID(), title: 'Title', content: 'Content' },
     { id: crypto.randomUUID(), title: 'Title', content: 'Content' },
     { id: crypto.randomUUID(), title: 'Title', content: 'Content' },
