@@ -1,49 +1,39 @@
-import { useState } from 'react'
 import './App.css'
-import { TNote } from './App.types'
+import NoteComposable from './notes/note.composable'
+import Note from './notes/note.component'
 
 // TODO: Add Sorting Controls
 function App() {
-  // TODO: try dividing notes by column: Example = notes1, notes2, notes3
-  const [notes] = useState<Array<TNote>>([
-    { id: crypto.randomUUID(), title: 'Title', content: 'Content' },
-    { id: crypto.randomUUID(), title: 'Title', content: 'Content' },
-    { id: crypto.randomUUID(), title: 'Title', content: 'Content' },
-    { id: crypto.randomUUID(), title: 'Title', content: 'Content' },
-    { id: crypto.randomUUID(), title: 'Title', content: 'Content' }
-  ])
-
-  const AddNote = () => {
-    // TODO: Add new note to the notes collection
-  }
-
+  const { tabletWidth, desktopWidth, col1, col2, col3, AddNote, DeleteNote } = NoteComposable()
   return (
     <main>
       <header>
         <h1>Notes</h1>
       </header>
 
-      <form action="#">
-        <ul>
-          {notes.map((n, i) => (
-            <li key={i}>
-              <label htmlFor={n.id} className='note'>
-                <div className='header'>
-                  <h2 className='title'>{n.title}</h2>
-                  <button className='note-btn-open' type='button'>Open</button>
-                  <button className='note-btn-close' type='reset'>Close</button>
-                </div>
-                <div className='content'>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis voluptatibus culpa porro at fuga reprehenderit optio exercitationem doloribus veritatis minima inventore atque voluptate maiores dolore amet nostrum, repudiandae reiciendis pariatur?
-                </div>
-                <input type="radio" name="note-radio" id={n.id} hidden />
-              </label>
-            </li>
-          ))}
-        </ul>
+      <form action="#" id='notes-list'>
+        <ol>
+          {col1.map((m, i) => <li key={i}><Note note={m} Delete={() => DeleteNote(m.id)} /></li>)}
+        </ol>
+
+        {
+          innerWidth >= tabletWidth && col2.length > 0 &&
+          <ol>
+            {col2.map((m, i) => <li key={i}><Note note={m} Delete={() => DeleteNote(m.id)} /></li>)}
+          </ol>
+        }
+
+        {
+          innerWidth >= desktopWidth && col3.length > 0 &&
+          <ol>
+            {col3.map((m, i) => <li key={i}><Note note={m} Delete={() => DeleteNote(m.id)} /></li>)}
+          </ol>
+        }
       </form>
 
-      <button type='button' id='btn-add-more' onClick={AddNote}>+</button>
+      <button type='button' id='btn-add-more' onClick={AddNote}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="62" height="62" viewBox="0 0 24 24"><path fill="currentColor" d="M11 13H5v-2h6V5h2v6h6v2h-6v6h-2z" /></svg>
+      </button>
     </main>
   )
 }

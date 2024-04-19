@@ -3,6 +3,29 @@
   --color-2: #393E46;
   --color-3: #00ADB5;
   --color-4: #ecdfdf;
+
+  --color-3-bright: #10ced8;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: .4em;
+
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--color-1);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--color-3);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #10ced8;
 }
 
 body {
@@ -11,42 +34,21 @@ body {
   line-height: 1.5em;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   word-break: break-all;
-
 }
 
-ul {
+#notes-list {
+  display: grid;
+}
+
+ol {
   list-style: none;
   padding: 0;
   display: flex;
   flex-direction: column;
 }
 
-@media screen and (min-width: 650px) {
-  ul {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  ul li {
-    max-width: 50%;
-  }
-}
-
-@media screen and (min-width: 1000px) {
-  ul {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 1em;
-  }
-
-  ul li {
-    width: 30%;
-  }
-}
-
 button {
-  font-size: 18px;
+  font-size: 20px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   cursor: pointer;
 }
@@ -58,7 +60,6 @@ header h1 {
 }
 
 .note {
-  width: 100%;
   display: block;
   background-color: var(--color-1);
   cursor: pointer;
@@ -67,6 +68,7 @@ header h1 {
 }
 
 .note:hover {
+  --color-3: var(--color-3-bright);
   border-left-width: 4px;
   border-left-color: var(--color-3);
 }
@@ -84,19 +86,20 @@ header h1 {
   color: var(--color-3);
 }
 
+.note .header .controls {
+  display: none;
+}
+
 .note-btn-open {
   pointer-events: none;
 }
 
 .note-btn-open,
+.note-btn-delete,
 .note-btn-close {
   color: var(--color-3);
   background-color: transparent;
   border: none;
-}
-
-.note-btn-close {
-  display: none;
 }
 
 .note .content {
@@ -106,7 +109,6 @@ header h1 {
   transition: opacity .2s ease-in-out;
 }
 
-/* TODO: Set the content of the note to overlap everything */
 .note:has(input[type='radio']:checked) {
   cursor: initial;
   border-left-width: 4px;
@@ -129,7 +131,7 @@ header h1 {
   display: none;
 }
 
-.note:has(input[type="radio"]:checked) .note-btn-close {
+.note:has(input[type="radio"]:checked) .header .controls {
   display: initial;
 }
 
@@ -138,5 +140,37 @@ header h1 {
   position: fixed;
   right: 2em;
   bottom: 2em;
-  padding: 2em;
+  color: var(--color-3);
+  background-color: transparent;
+  border: none;
+  transition: transform .1s ease-in-out, color .1s ease-in-out;
+}
+
+#btn-add-more:hover {
+  transform: scale(1.1);
+  color: var(--color-3-bright);
+}
+
+@media screen and (min-width: 800px) {
+  #notes-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  ol {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #notes-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  ol {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1em;
+  }
 }
