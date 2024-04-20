@@ -96,6 +96,7 @@ header h1 {
 
 .note-btn-open,
 .note-btn-delete,
+.note-btn-edit,
 .note-btn-close {
   color: var(--color-3);
   background-color: transparent;

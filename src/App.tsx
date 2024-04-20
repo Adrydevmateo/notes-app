@@ -4,7 +4,7 @@ import Note from './notes/note.component'
 
 // TODO: Add Sorting Controls
 function App() {
-  const { tabletWidth, desktopWidth, col1, col2, col3, AddNote, DeleteNote } = NoteComposable()
+  const { tabletWidth, desktopWidth, col1, col2, col3, AddNote, EditNote, DeleteNote } = NoteComposable()
   return (
     <main>
       <header>
@@ -13,20 +13,20 @@ function App() {
 
       <form action="#" id='notes-list'>
         <ol>
-          {col1.map((m, i) => <li key={i}><Note note={m} Delete={() => DeleteNote(m.id)} /></li>)}
+          {col1.map((m, i) => <li key={i}><Note note={m} Edit={() => EditNote(m.id)} Delete={() => DeleteNote(m.id)} /></li>)}
         </ol>
 
         {
           innerWidth >= tabletWidth && col2.length > 0 &&
           <ol>
-            {col2.map((m, i) => <li key={i}><Note note={m} Delete={() => DeleteNote(m.id)} /></li>)}
+            {col2.map((m, i) => <li key={i}><Note note={m} Edit={() => EditNote(m.id)} Delete={() => DeleteNote(m.id)} /></li>)}
           </ol>
         }
 
         {
           innerWidth >= desktopWidth && col3.length > 0 &&
           <ol>
-            {col3.map((m, i) => <li key={i}><Note note={m} Delete={() => DeleteNote(m.id)} /></li>)}
+            {col3.map((m, i) => <li key={i}><Note note={m} Edit={() => EditNote(m.id)} Delete={() => DeleteNote(m.id)} /></li>)}
           </ol>
         }
       </form>

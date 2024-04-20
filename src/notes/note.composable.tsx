@@ -39,6 +39,14 @@ export default function NoteComposable() {
         if (innerWidth < tabletWidth) return setCol1((old) => [note, ...old])
     }
 
+    const EditNote = (id: string) => {
+        const note = document.getElementById(id) as HTMLElement
+        if (note.contentEditable === 'true')
+            note.contentEditable = 'false'
+        else
+            note.contentEditable = 'true'
+    }
+
     const DeleteNote = (id: string) => {
         const found1 = col1.find((f) => f.id === id)
         const found2 = col2.find((f) => f.id === id)
@@ -59,5 +67,5 @@ export default function NoteComposable() {
 
     }
 
-    return { tabletWidth, desktopWidth, col1, col2, col3, AddNote, DeleteNote }
+    return { tabletWidth, desktopWidth, col1, col2, col3, AddNote, EditNote, DeleteNote }
 }
