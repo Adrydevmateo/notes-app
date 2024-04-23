@@ -29,7 +29,6 @@ export default function Note({ note, Edit, Delete }: IProps) {
             </div>
             <div className='content'>
                 {note.content}
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis voluptatibus culpa porro at fuga reprehenderit optio exercitationem doloribus veritatis minima inventore atque voluptate maiores dolore amet nostrum, repudiandae reiciendis pariatur?
             </div>
             <input type="radio" name="note-radio" id={note.id + 'note'} hidden />
         </label>

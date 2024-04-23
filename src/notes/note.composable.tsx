@@ -70,12 +70,20 @@ export default function NoteComposable() {
         }
     }
 
-    const EditNote = (id: string) => {
-        const note = document.getElementById(id) as HTMLElement
-        if (note.contentEditable === 'true')
-            note.contentEditable = 'false'
-        else
-            note.contentEditable = 'true'
+    const EditNote = (note: TNote, col: string) => {
+        const n = document.getElementById(note.id) as HTMLElement
+        if (n.contentEditable === 'true') {
+            const title = n.querySelector('.title') as HTMLElement
+            const content = n.querySelector('.content') as HTMLElement
+            note.title = title.innerHTML
+            note.content = content.innerHTML
+            n.contentEditable = 'false'
+            if (col === 'col1') localStorage[col] = JSON.stringify(col1)
+            if (col === 'col2') localStorage[col] = JSON.stringify(col2)
+            if (col === 'col3') localStorage[col] = JSON.stringify(col3)
+        } else {
+            n.contentEditable = 'true'
+        }
     }
 
     const DeleteNote = (id: string) => {

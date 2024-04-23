@@ -30,23 +30,23 @@ function App() {
 
       <form action="#" id='notes-list'>
         {
-          innerWidth >= tabletWidth && col1.length > 0 &&
+          col1.length > 0 &&
           <ol>
-            {col1.map((m, i) => <li key={i}><Note note={m} Edit={() => EditNote(m.id)} Delete={() => DeleteNote(m.id)} /></li>)}
+            {col1.map((m, i) => <li key={i}><Note note={m} Edit={() => EditNote(m, 'col1')} Delete={() => DeleteNote(m.id)} /></li>)}
           </ol>
         }
 
         {
           innerWidth >= tabletWidth && col2.length > 0 &&
           <ol>
-            {col2.map((m, i) => <li key={i}><Note note={m} Edit={() => EditNote(m.id)} Delete={() => DeleteNote(m.id)} /></li>)}
+            {col2.map((m, i) => <li key={i}><Note note={m} Edit={() => EditNote(m, 'col2')} Delete={() => DeleteNote(m.id)} /></li>)}
           </ol>
         }
 
         {
           innerWidth >= desktopWidth && col3.length > 0 &&
           <ol>
-            {col3.map((m, i) => <li key={i}><Note note={m} Edit={() => EditNote(m.id)} Delete={() => DeleteNote(m.id)} /></li>)}
+            {col3.map((m, i) => <li key={i}><Note note={m} Edit={() => EditNote(m, 'col3')} Delete={() => DeleteNote(m.id)} /></li>)}
           </ol>
         }
       </form>
