@@ -29,15 +29,16 @@
 }
 
 body {
-  font-size: 20px;
   word-spacing: .2em;
   line-height: 1.5em;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   word-break: break-all;
 }
 
-#notes-list {
-  display: grid;
+body,
+button,
+input {
+  font-size: 18px;
 }
 
 ol {
@@ -48,15 +49,25 @@ ol {
 }
 
 button {
-  font-size: 20px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   cursor: pointer;
 }
 
-header {}
+header {
+  transition: opacity .2s ease-in;
+}
 
 header h1 {
   color: var(--color-3);
+}
+
+#notes-list {
+  display: grid;
+  transition: opacity .2s ease-in;
+}
+
+main.creating-note #notes-list {
+  opacity: 0;
 }
 
 .note {
@@ -79,6 +90,7 @@ header h1 {
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 1em;
+  gap: 1em;
 }
 
 .note .header .title {
@@ -152,7 +164,75 @@ header h1 {
   color: var(--color-3-bright);
 }
 
+#create-note {
+  position: fixed;
+  top: 6em;
+  right: 0;
+  left: 0;
+  display: grid;
+  place-content: center;
+  gap: 1em;
+  background-color: var(--color-1);
+}
+
+#create-note #controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: .4em;
+}
+
+#create-note #title {
+  color: var(--color-3);
+  margin: 0;
+}
+
+#create-note #save {
+  color: var(--color-3);
+  background-color: transparent;
+  border: none;
+  display: flex;
+  margin-bottom: -.19em;
+  transition: color .2s ease-in-out;
+}
+
+#create-note #save:hover {
+  color: var(--color-3-bright);
+}
+
+#create-note input[type="text"] {
+  border: none;
+  padding: .5em;
+  font-weight: bold;
+  background-color: transparent;
+  color: var(--color-3-bright);
+  border-bottom: 1px solid var(--color-3);
+  outline: none;
+  transition: border-bottom-color .2s ease-in;
+}
+
+#create-note input[type="text"]:hover {
+  border-bottom-color: var(--color-3-bright);
+
+}
+
+#create-note input[type="text"]::placeholder {
+  color: var(--color-3);
+  transition: color .2s ease-in;
+}
+
+#create-note input[type="text"]:hover::placeholder {
+  color: var(--color-3-bright);
+}
+
 @media screen and (min-width: 800px) {
+
+  body,
+  button,
+  input {
+    font-size: 20px;
+  }
+
   #notes-list {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -164,6 +244,13 @@ header h1 {
 }
 
 @media screen and (min-width: 1200px) {
+
+  body,
+  button,
+  input {
+    font-size: 22px;
+  }
+
   #notes-list {
     grid-template-columns: repeat(3, 1fr);
   }

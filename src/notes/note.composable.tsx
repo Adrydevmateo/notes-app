@@ -9,8 +9,8 @@ export default function NoteComposable() {
     const [col2, setCol2] = useState<Array<TNote>>([])
     const [col3, setCol3] = useState<Array<TNote>>([])
 
-    const AddNote = () => {
-        const note = { id: crypto.randomUUID(), title: 'Title', content: 'Content' }
+    const AddNote = (title: string, content: string) => {
+        const note = { id: crypto.randomUUID(), title: title, content: content }
         if (innerWidth >= tabletWidth && innerWidth < desktopWidth) {
             if (currCol === 1) {
                 setCol1((old) => [note, ...old])
