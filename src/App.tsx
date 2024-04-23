@@ -29,9 +29,12 @@ function App() {
       </header>
 
       <form action="#" id='notes-list'>
-        <ol>
-          {col1.map((m, i) => <li key={i}><Note note={m} Edit={() => EditNote(m.id)} Delete={() => DeleteNote(m.id)} /></li>)}
-        </ol>
+        {
+          innerWidth >= tabletWidth && col1.length > 0 &&
+          <ol>
+            {col1.map((m, i) => <li key={i}><Note note={m} Edit={() => EditNote(m.id)} Delete={() => DeleteNote(m.id)} /></li>)}
+          </ol>
+        }
 
         {
           innerWidth >= tabletWidth && col2.length > 0 &&
